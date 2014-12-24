@@ -168,39 +168,11 @@ namespace :install do
     brew_install 'tmux', :requires => '>= 1.8'
   end
 
-  desc 'Install MacVim'
-  task :macvim do
-    step 'MacVim'
-    unless app? 'MacVim'
-      brew_cask_install 'macvim'
-    end
-
-    bin_dir = File.expand_path('~/bin')
-    bin_vim = File.join(bin_dir, 'vim')
-    unless ENV['PATH'].split(':').include?(bin_dir)
-      puts 'Please add ~/bin to your PATH, e.g. run this command:'
-      puts
-      puts %{  echo 'export PATH="~/bin:$PATH"' >> ~/.bashrc}
-      puts
-      puts 'The exact command and file will vary by your shell and configuration.'
-    end
-
-    FileUtils.mkdir_p(bin_dir)
-    unless File.executable?(bin_vim)
-      File.open(bin_vim, 'w', 0744) do |io|
-        io << <<-SHELL
-#!/bin/bash
-exec /Applications/MacVim.app/Contents/MacOS/Vim "$@"
-        SHELL
-      end
-    end
-  end
-
   desc 'Install Vundle'
   task :vundle do
     step 'vundle'
     install_github_bundle 'gmarik','vundle'
-    sh '~/bin/vim -c "BundleInstall" -c "q" -c "q"'
+    sh '/usr/bin/vim -c "BundleInstall" -c "q" -c "q"'
   end
 end
 
@@ -233,7 +205,6 @@ task :install do
   Rake::Task['install:ctags'].invoke
   Rake::Task['install:reattach_to_user_namespace'].invoke
   Rake::Task['install:tmux'].invoke
-  Rake::Task['install:macvim'].invoke
 
   # TODO install gem ctags?
   # TODO run gem ctags?
