@@ -8,6 +8,7 @@ syntax enable
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType cpp set ts=8 sw=8 sts=8
+autocmd FileType python set ts=3 sw=3 sts=3
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
