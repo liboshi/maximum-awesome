@@ -1,4 +1,4 @@
-" Bundles here are part of the CORE Maximum Awesome setup
+" Plugins here are part of the CORE Maximum Awesome setup
 " Do NOT add bundles to this list, as they might get removed when you upgrade
 " Maximum Awesome.
 " Please create ~/.vimrc.bundles.local and add any extra bundles you want there
@@ -6,7 +6,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'austintaylor/vim-indentobject'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle.vim'
 Bundle 'juvenn/mustache.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
