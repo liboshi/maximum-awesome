@@ -19,6 +19,10 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles.local
 endif
 
+if has('python3')
+  silent! python3 1
+endif
+
 call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
