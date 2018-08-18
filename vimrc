@@ -8,12 +8,11 @@ syntax enable
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType cpp set ts=8 sw=8 sts=8
-autocmd FileType python set ts=3 sw=3 sts=3
+autocmd FileType python set ts=4 sw=4 sts=4
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" install Vundle bundles
+call plug#begin('~/.vim/plugged')
+" install bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
   source ~/.vimrc.bundles.local
@@ -23,7 +22,7 @@ if has('python3')
   silent! python3 1
 endif
 
-call vundle#end()
+call plug#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
@@ -41,7 +40,7 @@ set ignorecase                                               " case-insensitive 
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+set listchars=tab:▸\ ,trail:●
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
@@ -53,7 +52,7 @@ set tabstop=4                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-set colorcolumn=80                                           " Line Limitation
+set colorcolumn=101                                           " Line Limitation
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -85,6 +84,9 @@ cnoremap w!! %!sudo tee > /dev/null %
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
+let $JS_CMD='node'
+let g:jsx_ext_required = 0 "Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -135,3 +137,4 @@ if filereadable(expand("~/.vimrc.local"))
   " noremap! jj <ESC>
   source ~/.vimrc.local
 endif
+
